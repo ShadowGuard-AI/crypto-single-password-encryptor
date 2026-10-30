@@ -85,15 +85,20 @@ def main():
     try:
         parser = setup_argparse()
         args = parser.parse_args()
-        key = load_or_generate_key()
 
         if args.command == "encrypt":
+            key = load_or_generate_key()
             encrypted_password = encrypt_password(key, args.password)
             save_password(args.filename, encrypted_password)
             print("Password encrypted and saved successfully.")
 
         elif args.command == "decrypt":
+            # Load the token before touching the key: the old order ran
+            # load_or_generate_key first, so a decrypt of a missing file
+            # in a fresh directory still created a crypto_vault.key as
+            # a side effect of a run that only failed.
             encrypted_password = load_password(args.filename)
+            key = load_or_generate_key()
             decrypted_password = decrypt_password(key, encrypted_password)
             print("Decrypted password:", decrypted_password)
 
