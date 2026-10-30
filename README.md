@@ -1,3 +1,5 @@
+![Banner](banner.png)
+
 # crypto-vault
 
 A small command line tool that encrypts a single password string and saves the encrypted token to a file, and later decrypts a saved token back to the original password. Encryption uses the Fernet symmetric encryption provided by the Python cryptography library, with a key stored in a local key file.
