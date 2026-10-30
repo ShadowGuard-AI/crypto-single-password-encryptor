@@ -1,6 +1,6 @@
 ![Banner](banner.png)
 
-# crypto-vault
+# crypto-single-password-encryptor
 
 A small command line tool that encrypts a single password string and saves the encrypted token to a file, and later decrypts a saved token back to the original password. Encryption uses the Fernet symmetric encryption provided by the Python cryptography library, with a key stored in a local key file.
 
@@ -15,11 +15,11 @@ The other modules it uses (argparse, logging, os, sys) are part of the Python st
 
 ## Installation
 
-1. Clone the repository: `git clone https://github.com/ShadowGuardAI/crypto-vault.git`
-2. Move into the directory: `cd crypto-vault`
+1. Clone the repository: `git clone https://github.com/ShadowGuardAI/crypto-single-password-encryptor.git`
+2. Move into the directory: `cd crypto-single-password-encryptor`
 3. Install the dependency: `pip install -r requirements.txt`
 
-There is no PyPI package and no `crypto-vault` command. The tool is run as `python main.py ...` from the cloned directory.
+There is no PyPI package and no `crypto-single-password-encryptor` command. The tool is run as `python main.py ...` from the cloned directory.
 
 ## How the key works
 
@@ -72,4 +72,4 @@ This prints `Decrypted password: S3cret!Pass`
 
 ## License
 
-crypto-vault is licensed under the GNU General Public License v3.0 (GPL-3.0). See LICENSE.
+crypto-single-password-encryptor is licensed under the GNU General Public License v3.0 (GPL-3.0). See LICENSE.
