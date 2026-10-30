@@ -1,76 +1,73 @@
-## crypto-vault
+# crypto-vault
 
-### Overview
+A small command line tool that encrypts a single password string and saves the encrypted token to a file, and later decrypts a saved token back to the original password. Encryption uses the Fernet symmetric encryption provided by the Python cryptography library, with a key stored in a local key file.
 
-crypto-vault is a simple password storage and management tool focused on providing basic cryptographic operations. It can help you securely store sensitive information such as passwords, secrets, and other sensitive data.
+It is not a vault with accounts or entries: it stores one password per file, and it encrypts password strings, not whole files.
 
-### Installation
+## Requirements
 
-To install crypto-vault, you will need Python 3.6 or later and the following dependencies:
+- Python 3.10 or later (tested on Python 3.12)
+- cryptography 41.0 or later, listed in requirements.txt
 
-- cryptography
-- argparse
-- logging
+The other modules it uses (argparse, logging, os, sys) are part of the Python standard library and do not need to be installed.
 
-You can install these dependencies using pip:
+## Installation
 
-```
-pip install cryptography argparse logging
-```
+1. Clone the repository: `git clone https://github.com/ShadowGuardAI/crypto-vault.git`
+2. Move into the directory: `cd crypto-vault`
+3. Install the dependency: `pip install -r requirements.txt`
 
-Once the dependencies are installed, you can install crypto-vault from PyPI:
+There is no PyPI package and no `crypto-vault` command. The tool is run as `python main.py ...` from the cloned directory.
 
-```
-pip install crypto-vault
-```
+## How the key works
 
-### Usage
+On first use the tool creates a key file named `crypto_vault.key` in the current working directory and reuses it on later runs from the same directory. Keep this file safe and backed up: a saved password cannot be decrypted without the exact key that encrypted it, and tokens decrypted from a different working directory (with a different key) will fail.
 
-To use crypto-vault, simply run the following command:
+## Usage
 
 ```
-crypto-vault
+python main.py [-h] {encrypt,decrypt} ...
 ```
 
-This will open the interactive command-line interface (CLI) for crypto-vault. From the CLI, you can perform the following operations:
-
-- **Encrypt a file:** Encrypt a file using AES-256 encryption.
-- **Decrypt a file:** Decrypt a file that was previously encrypted using crypto-vault.
-- **View encrypted files:** List the encrypted files that are stored in the current directory.
-- **Delete encrypted files:** Delete an encrypted file from the current directory.
-
-For more information on how to use crypto-vault, please refer to the usage examples below.
-
-### Usage Examples
-
-**Encrypt a file:**
+### Encrypt a password
 
 ```
-crypto-vault encrypt file.txt
+python main.py encrypt PASSWORD FILENAME
 ```
 
-**Decrypt a file:**
+- `PASSWORD`: the password string to encrypt
+- `FILENAME`: the file to save the encrypted token to
+
+Example:
 
 ```
-crypto-vault decrypt file.txt.enc
+python main.py encrypt "S3cret!Pass" mypassword.enc
 ```
 
-**View encrypted files:**
+This prints `Password encrypted and saved successfully.`
+
+### Decrypt a saved password
 
 ```
-crypto-vault ls
+python main.py decrypt FILENAME
 ```
 
-**Delete encrypted files:**
+Example:
 
 ```
-crypto-vault rm file.txt.enc
+python main.py decrypt mypassword.enc
 ```
 
-### Security Warnings
+This prints `Decrypted password: S3cret!Pass`
 
-crypto-vault is a simple password storage and management tool and should not be used to store highly sensitive information. It is important to note that the security of your data depends on the strength of your password. Please choose a strong password that is not easily guessable.
+## Limitations
 
-### License
+- Only the two subcommands above exist. There is no list, delete, or search command, and no interactive interface.
+- The first argument to `encrypt` is the password itself, not a file to encrypt. Passing a filename encrypts the filename string, not the contents of that file.
+- Anyone with both the token file and `crypto_vault.key` can decrypt the password. Protect the key file like the passwords themselves, and do not commit it to version control.
+- Decrypting a missing file or a file that is not a valid token for the current key fails with an error message and exit code 1.
+- Do not rely on this simple tool for highly sensitive secrets; the security of the result depends on protecting the key file.
 
-crypto-vault is licensed under the GNU General Public License v3.0 to CY83R-3X71NC710N.
+## License
+
+crypto-vault is licensed under the GNU General Public License v3.0 (GPL-3.0). See LICENSE.
