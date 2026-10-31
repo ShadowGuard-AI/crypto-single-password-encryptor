@@ -14,12 +14,31 @@ logger = logging.getLogger("crypto-vault")
 def load_or_generate_key():
     key_file = "crypto_vault.key"
     if os.path.exists(key_file):
+        # The key decrypts every saved password, so a key file that
+        # group or other users can read is tightened to owner only
+        # before it is used. If tightening fails, say so plainly
+        # instead of loading a readable key in silence.
+        try:
+            mode = os.stat(key_file).st_mode
+            if mode & 0o077:
+                os.chmod(key_file, 0o600)
+                logger.warning(
+                    "Encryption key file had group or other permissions set; tightened it to owner only (0600)."
+                )
+        except OSError as e:
+            logger.warning(
+                "Encryption key file is readable by group or other users and could not be tightened to 0600: %s. Restrict its permissions by hand.", e
+            )
         with open(key_file, "rb") as file:
             key = file.read()
             logger.info("Encryption key loaded.")
     else:
         key = Fernet.generate_key()
-        with open(key_file, "wb") as file:
+        # Create the key file owner only from the start: a plain open
+        # leaves it at the process default, which can be group or
+        # world readable.
+        fd = os.open(key_file, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600)
+        with os.fdopen(fd, "wb") as file:
             file.write(key)
             logger.info("New encryption key generated and saved.")
     return key

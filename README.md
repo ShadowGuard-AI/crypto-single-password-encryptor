@@ -23,7 +23,7 @@ There is no PyPI package and no `crypto-single-password-encryptor` command. The 
 
 ## How the key works
 
-On first use the tool creates a key file named `crypto_vault.key` in the current working directory and reuses it on later runs from the same directory. Keep this file safe and backed up: a saved password cannot be decrypted without the exact key that encrypted it, and tokens decrypted from a different working directory (with a different key) will fail.
+On first use the tool creates a key file named `crypto_vault.key` in the current working directory and reuses it on later runs from the same directory. The file is created with owner only permissions (0600). When an existing key file is loaded with group or other permissions set, the tool tightens it to 0600 and prints a warning; if tightening fails, it warns that the key is readable by others and should be restricted by hand. Keep this file safe and backed up: a saved password cannot be decrypted without the exact key that encrypted it, and tokens decrypted from a different working directory (with a different key) will fail.
 
 ## Usage
 
