@@ -12,6 +12,12 @@ logger = logging.getLogger("crypto-vault")
 
 # Generate or load encryption key
 def load_or_generate_key():
+    # The key file name is fixed and relative, so the vault this
+    # function sees depends on the directory the command runs in.
+    # Run decrypt from another directory and there is no key file
+    # there, so a new one is generated and the token made under the
+    # old key will not decrypt. Key and password file travel separately
+    # by design here: losing the key file loses every saved password.
     key_file = "crypto_vault.key"
     if os.path.exists(key_file):
         # The key decrypts every saved password, so a key file that
@@ -66,6 +72,9 @@ def decrypt_password(key, encrypted_password):
 
 # Save encrypted password to file
 def save_password(filename, encrypted_password):
+    # One token per file, written with "wb", so saving to a name that
+    # already holds a password replaces it with no warning. The file
+    # is the whole record; there is no list of entries behind it.
     with open(filename, "wb") as file:
         file.write(encrypted_password)
         logger.info("Encrypted password saved to file: %s", filename)
