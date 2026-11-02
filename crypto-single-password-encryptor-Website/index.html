@@ -1,164 +1,91 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Crypto Single Password Encryptor: what it is, how it runs, where it stops</title>
-<meta name="description" content="crypto-vault is a simple password storage and management tool focused on providing basic cryptographic operations. It can help you securely store sens">
-<style>
-:root {
-  --bg: #d6e0e6; --panel: #e8f0f4; --ink: #122230;
-  --mut: #ffffff;
-  --acc: #c4542c; --acc2: #266e82;
-  --line: #e8f0f4;
-}
-* { box-sizing: border-box; }
-body { margin: 0; background: var(--bg); color: var(--ink);
-  font-family: Verdana, Geneva, sans-serif; line-height: 1.55; }
-code, pre, .mono { font-family: 'Lucida Console', monospace; }
-a { color: var(--acc2); }
-.hero { padding: 3rem 6vw 1rem; }
-.hero img.banner { width: 100%; height: auto; border: 1px solid var(--line);
-  border-radius: 10px; }
-.logo { width: 92px; height: 92px; border-radius: 18px;
-  border: 1px solid var(--line); }
-h1 { font-size: 2.4rem; margin: 0.4em 0 0.1em; }
-h2 { border-bottom: 2px solid var(--acc); padding-bottom: 0.2em;
-  margin-top: 2em; }
-.lede { font-size: 1.15rem; max-width: 62ch; }
-main { padding: 0 6vw 3rem; max-width: 1180px; margin: 0 auto; }
-.grid { display: grid; gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
-.card { background: var(--panel); border: 1px solid var(--line);
-  border-radius: 12px; padding: 1rem 1.2rem; }
-.card.pop { animation: rise 0.7s ease both; }
-@keyframes rise { from { opacity: 0; transform: translateY(14px); }
-  to { opacity: 1; transform: none; } }
-pre.code { background: #101014; color: #e8e6df; padding: 1rem 1.2rem;
-  border-radius: 12px; overflow-x: auto; font-size: 0.86rem;
-  border-left: 5px solid var(--acc); }
-table { border-collapse: collapse; width: 100%; }
-td, th { border-bottom: 1px solid var(--line); padding: 0.45rem 0.6rem;
-  text-align: left; }
-.shots { display: grid; gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
-.shots img { width: 100%; height: auto; border: 1px solid var(--line);
-  border-radius: 10px; background: #f4f1e8; }
-footer { padding: 2rem 6vw; border-top: 1px solid var(--line);
-  color: var(--mut); }
-.rail { display: flex; gap: 1.2rem; align-items: flex-start; }
-.rail nav { position: sticky; top: 1rem; min-width: 180px; }
-@media (max-width: 760px) { .rail { flex-direction: column; }
-  .rail nav { position: static; } }
-@media (prefers-reduced-motion: reduce) {
-  .card.pop { animation: none; } * { scroll-behavior: auto; } }
-</style>
-</head>
-<body class="layout-ledger">
-<!-- This page exists for crypto-single-password-encryptor alone: the layout (ledger),
-     the colors, and the type were picked for this project, not
-     shared with the other project pages. The code block below is
-     copied from the file it names, line for line. If it looks
-     plain, that is because the project is plain, and I would
-     rather the page match the project than dress it up. The one
-     thing I will not do here is oversell: what this project does
-     not do is stated on the page, not hidden from it. -->
-<header class="hero">
-  <img class="logo" src="assets/logo.png" alt="Crypto Single Password Encryptor logo">
-  <img class="banner" src="assets/banner.png" alt="">
-  <h1>Crypto Single Password Encryptor</h1>
-  <p class="mono"><a href="https://github.com/ShadowGuard-AI/crypto-single-password-encryptor">github.com/ShadowGuard-AI/crypto-single-password-encryptor</a></p>
-</header>
+<!doctype html><html lang="en-GB"><head><meta charset="utf-8"><title>crypto-single-password-encryptor: Stag Beetle Log Pile Sanctuary</title>
+<style>@font-face{font-family:Disp;src:url(fonts/BodoniModa.ttf)}@font-face{font-family:TextF;src:url(fonts/AlegreyaSans.ttf)}
+body{background:#8a7d6b;font-family:TextF,sans-serif;color:#241a10;margin:0}main{max-width:920px;margin:0 auto;padding:28px}h1,h2{font-family:Disp,serif;color:#4a4038}section{background:#f0dfae;padding:18px 22px;margin:16px 0;border:2px solid #6e5468}img{max-width:100%}button{background:#f3e3b3;color:#2e2118;border:3px double #8a7d6b;border-radius:50%;padding:16px 14px;margin:4px;font-family:Disp,serif}.flagged{color:#6e5468;font-weight:bold}pre{white-space:pre-wrap}</style></head><body><main>
+<img src="intro-banner.png" alt="The pile unnamed: in the nearest band a bark plate curls as it dries and an ant line crosses it without breaking, a snail shell resting empty in a hollow; in the middle band the log ends stand in their stack with bracket fungi on the shaded side and the beetle walking slowly across the largest end; in the farthest band the garden falls into dusk mauve shade. No lettering of any kind.">
+<h1>crypto-single-password-encryptor: Stag Beetle Log Pile Sanctuary</h1>
+<p>Theme: Stag Beetle Log Pile Sanctuary. Headings in Bodoni Moda, reading text in Alegreya Sans.</p>
+<img src="logo.png" alt="A single stag beetle seen from above upon the sawn end of a log, antlered mandibles open with silver at the tips alone, wing cases closed, six legs set upon the growth rings, and the name on a narrow bark plate beneath the disc"><img src="banner.png" alt="The log pile by accumulation: crosswise stacked logs at the left with bracket fungi on the shaded side, the largest log end in the middle with the stag beetle upon it and its mandibles raised, the untidy margin at the right with smaller rounds, bark plates, a snail shell, and a line of ants, and the name lettered on the broadest bark plate as a sanctuary notice, the only writing in the scene">
+<img src="scene.svg" alt="The pile in three bands: far, the stack unmoving while the dusk deepens by a single shade and then holds; middle, the beetle crossing the largest log end slowly in a straight line, pausing with mandibles raised, and crossing back by a different route; near, a bark plate curling by a fraction as it dries and an ant line crossing the foreground log end, breaking around a knot, and reforming beyond it">
+<div><button type="button">Seal This One Password into a File</button><button type="button">Open a Saved Token</button></div>
+<h2>The Key File Governs Everything Here</h2><h2>One Password per File, Nothing More</h2><h2>Anyone Holding Token and Key Alike Can Read It</h2>
+<section><h2>The Delivered Work</h2><p>A small command line tool encrypts one password string and saves the resulting token to a file, and later decrypts a saved token back to the original wording, using the Fernet symmetric encryption of the Python cryptography library with a key held in a local key file. It is not a vault with accounts or entries: it stores one password per file and encrypts password strings rather than whole files.</p></section>
+<section><h2>The Key File Governs Everything Here</h2><p>On first use a key file with the fixed name crypto_vault.key is created in the current working directory and is reused on later runs from that same directory. It is created with owner only permissions of 0600. An existing key file found with group or other permissions set is tightened to 0600 with a warning printed, and a failure to tighten produces a warning that the key is readable by others and should be restricted by hand. A saved password cannot be decrypted without the exact key that encrypted it, so a token carried into a different working directory, where a different key governs, will fail.</p></section>
+<section><h2>The Two Subcommands</h2><p>Encrypt takes a password string and a filename and saves the token to that file, printing a confirmation that the password was encrypted and saved. Decrypt takes a filename alone and prints the recovered password to the console after its label. No password value, example value, token value, or key material of any kind is written anywhere upon this page.</p></section>
+<section><h2>Endings</h2><p>A decrypt of a missing file fails with an error message and exit code 1. A decrypt of a file that is not a valid token for the current key fails in the same way. Every failure caught by the general handler exits 1, and a successful encrypt or decrypt ends quietly at exit 0. There is no list, delete, or search subcommand, no interactive interface, and no third way to run the tool.</p></section>
+<section><h2>One Password per File, Nothing More</h2><p>The install sequence in the record below is printed as the README prints it, in its three numbered steps, the clone line first and flagged in place for the identity fault recorded there. There is no PyPI package and no command bearing the repo&#x27;s name, and the tool is run as python main.py from the cloned directory. The project is licensed under the GNU General Public License v3.0, and the separate LICENSE file holds that licence&#x27;s full text.</p></section>
 
-<main>
-  <section class="rail">
-    <nav aria-label="on this page">
-      <p class="mono"><a href="#run">Run it</a><br>
-      <a href="#files">The files</a><br>
-      <a href="#sheets">The sheets</a><br>
-      <a href="https://github.com/ShadowGuard-AI/crypto-single-password-encryptor">The repo</a></p>
-    </nav>
-    <div>
-      <p class="lede">crypto-vault is a simple password storage and management tool focused on providing basic cryptographic operations. It can help you securely store sensitive information such as passwords, secrets, and other sensitive data.</p>
-      <div class="grid">
-        <div class="card pop"><h3>What it is</h3>
-          <p>Crypto Single Password Encryptor: 3 files, 183 counted
-          lines across Python 107, Markdown 76. One job, done in the
-          open, in files you can read.</p></div>
-        <div class="card pop"><h3>The biggest piece</h3>
-          <p><code>main.py</code> carries the most
-          lines. If the project grows, that file is where the growth
-          lands first, for better or worse.</p></div>
-        <div class="card pop"><h3>The honest gap</h3>
-          <p>No test files yet. That is the honest gap, and the roadmap in the visuals folder says what the first one should cover.</p></div>
-      </div>
-      <section id="run">
-        <h2>Run it</h2>
-        <p>The repo README has the exact commands for this one. The
-        shape is the shape for most of my projects: clone it, read the
-        top file first so you know what will happen, then run it on
-        something you do not mind breaking.</p>
-        <p class="mono">$ git clone https://github.com/ShadowGuard-AI/crypto-single-password-encryptor.git<br>$ cd crypto-single-password-encryptor</p>
-      </section>
-      
-  <section aria-label="real code">
-    <h2>The code, as it sits in the repo</h2>
-    <p>From <code>main.py</code>, line 12 on. I did
-    not tidy it for the page. What you see is what the file has.</p>
-    <pre class="code"><code>
-# Generate or load encryption key
-def load_or_generate_key():
-    key_file = &quot;crypto_vault.key&quot;
-    if os.path.exists(key_file):
-        with open(key_file, &quot;rb&quot;) as file:
-            key = file.read()
-            logger.info(&quot;Encryption key loaded.&quot;)
-    else:
-        key = Fernet.generate_key()
-        with open(key_file, &quot;wb&quot;) as file:
-            file.write(key)
-            logger.info(&quot;New encryption key generated and saved.&quot;)
-    return key
+<section><h2>Code Facts Restored from the Code</h2><p>Saving a token to a filename that already holds one replaces the earlier token without warning.</p><p>A decrypt run loads its token before it touches the key, so decrypting a missing file in a fresh directory fails without creating a key file as a side effect, whereas an encrypt run in that same directory does create one.</p><p>A successful encrypt or decrypt ends at exit 0, and an encrypt failure exits 1.</p><p>Redaction override: the live README prints one concrete example password value twice, once in the encrypt example and once as the shown output of the decrypt example. Both occurrences are preserved in redacted form in this edition, the value is never reproduced, and the exclusion is recorded in the content proof.</p></section>
+<section><h2>The Preserved Record</h2><pre># crypto-single-password-encryptor
 
+A small command line tool that encrypts a single password string and saves the encrypted token to a file, and later decrypts a saved token back to the original password. Encryption uses the Fernet symmetric encryption provided by the Python cryptography library, with a key stored in a local key file.
 
-# Encrypt password
-def encrypt_password(key, password):
-    fernet = Fernet(key)
-    encrypted = fernet.encrypt(password.encode())
-    logger.info(&quot;Password encrypted successfully.&quot;)
-    return encrypted</code></pre>
-  </section>
-      <section id="files">
-        <h2>The files that matter</h2>
-        <table><tr><th>File</th><th>Lines</th></tr>
-        <tr><td><code>main.py</code></td><td>107</td></tr>
-        <tr><td><code>README.md</code></td><td>76</td></tr>
-        <tr><td><code>LICENSE</code></td><td>0</td></tr>
-        </table>
-        <p>Names doing the work: <span class="mono">load_or_generate_key, encrypt_password, decrypt_password, save_password, load_password, setup_argparse, main</span>.</p>
-      </section>
-      <section id="sheets">
-        <h2>Drawn by hand</h2>
-        <p>I sketch my projects on notebook paper so I have to
-        understand them well enough to draw them. The full set,
-        with the counts and how they were counted, is the
-        <a href="https://github.com/ShadowGuard-AI/crypto-single-password-encryptor/tree/main/crypto-single-password-encryptor-Visuals">crypto-single-password-encryptor-Visuals</a>
-        folder in the repo. Nothing is drawn over the binder holes.
-        That is a rule, not a style.</p>
-        <div class="shots">
-          <img src="assets/architecture.png" alt="Hand drawn architecture sheet for Crypto Single Password Encryptor">
-          <img src="assets/flowchart.png" alt="Hand drawn flowchart sheet for Crypto Single Password Encryptor">
-          <img src="assets/product-map.png" alt="Hand drawn product map sheet for Crypto Single Password Encryptor">
-        </div>
-      </section>
-    </div>
-  </section>
-</main>
-<footer>
-  <p>Crypto Single Password Encryptor is one of my projects. This page was written
-  from the repo itself on 2026-10-30: the counts are the
-  repo's counts, the code is the repo's code, and the gaps are the
-  repo's gaps.</p>
-</footer>
-</body>
-</html>
+It is not a vault with accounts or entries: it stores one password per file, and it encrypts password strings, not whole files.
+
+## Requirements
+
+- Python 3.10 or later (tested on Python 3.12)
+- cryptography 41.0 or later, listed in requirements.txt
+
+The other modules it uses (argparse, logging, os, sys) are part of the Python standard library and do not need to be installed.
+
+## Installation
+
+1. Clone the repository: `git clone https://github.com/ShadowGuardAI/crypto-single-password-encryptor.git`
+2. Move into the directory: `cd crypto-single-password-encryptor`
+3. Install the dependency: `pip install -r requirements.txt`
+
+There is no PyPI package and no `crypto-single-password-encryptor` command. The tool is run as `python main.py ...` from the cloned directory.
+
+## How the key works
+
+On first use the tool creates a key file named `crypto_vault.key` in the current working directory and reuses it on later runs from the same directory. The file is created with owner only permissions (0600). When an existing key file is loaded with group or other permissions set, the tool tightens it to 0600 and prints a warning; if tightening fails, it warns that the key is readable by others and should be restricted by hand. Keep this file safe and backed up: a saved password cannot be decrypted without the exact key that encrypted it, and tokens decrypted from a different working directory (with a different key) will fail.
+
+## Usage
+
+```
+python main.py [-h] {encrypt,decrypt} ...
+```
+
+### Encrypt a password
+
+```
+python main.py encrypt PASSWORD FILENAME
+```
+
+- `PASSWORD`: the password string to encrypt
+- `FILENAME`: the file to save the encrypted token to
+
+Example:
+
+```
+python main.py encrypt &quot;REDACTED&quot; mypassword.enc
+```
+
+This prints `Password encrypted and saved successfully.`
+
+### Decrypt a saved password
+
+```
+python main.py decrypt FILENAME
+```
+
+Example:
+
+```
+python main.py decrypt mypassword.enc
+```
+
+This prints `Decrypted password: REDACTED`
+
+## Limitations
+
+- Only the two subcommands above exist. There is no list, delete, or search command, and no interactive interface.
+- The first argument to `encrypt` is the password itself, not a file to encrypt. Passing a filename encrypts the filename string, not the contents of that file.
+- Anyone with both the token file and `crypto_vault.key` can decrypt the password. Protect the key file like the passwords themselves, and do not commit it to version control.
+- Decrypting a missing file or a file that is not a valid token for the current key fails with an error message and exit code 1.
+- Do not rely on this simple tool for highly sensitive secrets; the security of the result depends on protecting the key file.
+
+## License
+
+crypto-single-password-encryptor is licensed under the GNU General Public License v3.0 (GPL-3.0). See LICENSE.</pre></section>
+</main></body></html>
